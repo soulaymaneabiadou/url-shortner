@@ -14,11 +14,11 @@ exports.shortenUrl = asyncHandler(async (req, res, next) => {
   const { longUrl } = req.body;
 
   if (!validUrl.isUri(process.env.BASE_URL)) {
-    return next(new ErrorResponse('Invalid base url', 401));
+    return next(new ErrorResponse('Invalid base url', 400));
   }
 
   if (!validUrl.isUri(longUrl)) {
-    return next(new ErrorResponse('Invalid Url', 401));
+    return next(new ErrorResponse('Invalid Url', 400));
   }
 
   const urlCode = shortId.generate();
@@ -35,7 +35,7 @@ exports.shortenUrl = asyncHandler(async (req, res, next) => {
     });
   }
 
-  return res.status(200).json({
+  res.status(200).json({
     success: true,
     data: url
   });

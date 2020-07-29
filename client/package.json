@@ -17,5 +17,6 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0"
-  }
+  },
+  "proxy": "http://localhost:3000/api/v1"
 }
